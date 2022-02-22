@@ -9,10 +9,15 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
-    hold:
-      type: approval
-      requires: 
-        - build
-    deploy:
-      requires: 
-        - hold
+
+workflows:
+  build-test-and-approval-deploy:
+    jobs:
+      - build
+      hold:
+        type: approval
+        requires: 
+          - build
+      deploy:
+        requires: 
+          - hold
