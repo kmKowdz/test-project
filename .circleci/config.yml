@@ -12,7 +12,7 @@ jobs:
       - run: echo "hello world" # run the `echo` command
     
 workflows:
-    build-workflow:
+  build-workflow:
     jobs:
       - build
       - hold:
