@@ -15,10 +15,10 @@ workflows:
   build-workflow:
     jobs:
       build
-        hold:
-          type: approval
-          requires: 
-            - build
-        deploy:
-          requires:
-            - hold
+      hold:
+        type: approval
+        requires: 
+          - build
+      deploy:
+        requires:
+          - hold
