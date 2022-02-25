@@ -13,7 +13,7 @@ jobs:
     
 workflows:
   version: 2
-  build-workflow:
+  build-approval:
     jobs:
       - build
       - hold:
