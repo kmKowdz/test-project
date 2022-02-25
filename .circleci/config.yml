@@ -26,11 +26,11 @@ workflows:
     jobs:
       - build
       - request-approval
-      hold:
-        type: approval
-        requires: 
-          - build
-          - request-approval
-      deploy-stuff:
-        requires:
-          - hold
+      - hold:
+          type: approval
+          requires: 
+            - build
+            - request-approval
+      - deploy-stuff:
+          requires:
+            - hold
