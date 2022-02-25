@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  xmatters: xmatters/xmatters-orb@1.0.4
-
 jobs:
   build:
     docker:
@@ -14,23 +11,14 @@ jobs:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
     
-    request-approval:
-      docker:
-        - image: circleci/node:4.8.2
-      steps:
-        - xmatters/notify:
-            recipients: Engineering Managers
-    
 workflows:
-  build-test-and-approval-deploy:
+    build-workflow:
     jobs:
       - build
-      - request-approval
       - hold:
           type: approval
           requires: 
             - build
-            - request-approval
-      - deploy-stuff:
+      - deploy:
           requires:
             - hold
