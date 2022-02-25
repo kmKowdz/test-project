@@ -12,13 +12,14 @@ jobs:
       - run: echo "hello world" # run the `echo` command
     
 workflows:
+  version: 2
   build-workflow:
     jobs:
-      build
-      hold:
-        type: approval
-        requires: 
-          - build
-      deploy:
-        requires:
-          - hold
+      - build
+      - hold:
+          type: approval
+          requires: 
+            - build
+      - deploy:
+          requires:
+            - hold
