@@ -103,6 +103,18 @@
 //        }
 
 
+def user
+node {
+  wrap([$class: 'BuildUser']) {
+    user = env.BUILD_USER_ID
+  }
+  
+  emailext mimeType: 'text/html',
+                 subject: "[Jenkins]${currentBuild.fullDisplayName}",
+                 to: "km.mscsthesis@gmail.com",
+                 body: '''<a href="${BUILD_URL}input">click to approve</a>'''
+}
+
 pipeline {
     agent none
     stages {
