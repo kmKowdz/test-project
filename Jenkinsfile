@@ -90,7 +90,6 @@ stage('deploy'){
                 }
             }
         }
-        
 stage('abortdeploy'){
            when{
                environment name:'APPROVED_DEPLOY',value:'no'
