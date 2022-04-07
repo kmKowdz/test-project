@@ -48,13 +48,10 @@ stage('build'){
 
 stage('Approval Step'){
             steps{
-                
-                //----------------send an approval prompt-------------
                 script {
                    env.APPROVED_DEPLOY = input message: 'User input required',
                    parameters: [choice(name: 'Deploy?', choices: 'no\nyes', description: 'Choose "yes" if you want to deploy this build')]
                        }
-                //-----------------end approval prompt------------
             }
         }
 
